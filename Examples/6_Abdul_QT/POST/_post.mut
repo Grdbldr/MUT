@@ -1,0 +1,7 @@
+! This example reads a modflow project and postprocesses it
+modflow_usg
+
+    modflow output to modflow structure
+    abdulqt
+
+end

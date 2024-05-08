@@ -1,0 +1,5 @@
+#!MC 1410
+$!AlterData 
+  Equation = '{Depth mm}=({SWF Head}-{SWF z Cell})*1000'
+$!AlterData 
+  Equation = '{Infiltration (mm/day)}=-{SWF to GWF}*1000*86400'

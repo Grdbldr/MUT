@@ -1,0 +1,12 @@
+
+modflow_usg
+
+    ! Given a tecplot file prefix, this instruction does the following: 
+    !  - writes tecplot data files containing cell neighbour information
+    !  - converts the neighbour information into modflow IA and JA data structures
+
+    tecplot to ia ja structure
+    _CLN_for_SWFo.swf1
+    
+end
+

@@ -1,0 +1,7 @@
+modflow_usg
+! tag modflow files
+
+ modflow output to modflow structure
+ swf1    
+
+end

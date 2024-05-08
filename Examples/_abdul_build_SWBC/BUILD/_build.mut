@@ -1,0 +1,176 @@
+! This example builds a modflow project from a Grid Builder 2D triangular mesh
+modflow_usg
+
+    modflow prefix
+    abdul-mc-SWBC
+   
+    ! Grid definition section-------------------------
+    
+    2d mesh from gb
+    ./gb/grid
+    
+    generate swf domain
+        top elevation
+            elevation from gb file
+            ./gb/grid.nprop.Surface elevation
+        end
+    end
+
+    
+    generate layered gwf domain
+!         zone by layer
+        
+        top elevation
+            elevation from gb file
+            ./gb/grid.nprop.Surface elevation
+        end
+    
+        new layer
+            layer name
+            Top layer
+    
+            uniform sublayering
+            5
+    
+            elevation from gb file
+            ./gb/grid.nprop.Surface elevation - 0.5 m
+        end
+    
+        new layer
+            layer name
+            Middle layer
+    
+            uniform sublayering
+            5
+    
+            elevation from gb file
+            ./gb/grid.nprop.Surface elevation - 1.5 m
+        end
+    
+        new layer
+            layer name
+            Base layer
+    
+            uniform sublayering
+            5
+    
+            elevation constant 
+            0.0
+        end
+    
+    
+    end 
+    
+    ! ------------------------- Static properties definition
+
+    active domain 
+    gwf
+    
+        choose all cells
+        
+        gwf kh
+        1d-5
+        gwf kv
+        1d-5
+        gwf ss
+        1.2d-7
+        gwf sy
+        0.34d0
+        gwf alpha
+        1.9d0
+        gwf beta
+        6.d0
+        gwf sr
+        0.18d0
+        gwf brooks
+        -1.0d0
+        gwf initial head
+        2.78d0
+    
+    active domain 
+    swf
+    
+        clear chosen zones
+        choose zone number
+        1
+        swf depth for smoothing
+        1.0d-06    1.0d-06
+        swf manning
+        0.03d0
+        
+        clear chosen zones
+        choose zone number
+        2
+        swf depth for smoothing
+        1.0d-06    1.0d-06
+        swf manning
+        0.3d0
+
+        choose all cells
+
+        swf to gwf connection length
+        0.001d0
+
+        swf initial depth
+        1.0d-4
+
+
+        ! Required for critical depth boundary condition definition below
+        clear chosen nodes
+        choose gb nodes
+        ./gb/grid.nchos.Outer boundary nodes
+        flag chosen nodes as outer boundary
+
+        
+    ! ------------------------- Stress period and boundary condition definition 
+    ! stress period 1
+    stress period
+        type
+        TR
+        
+        duration
+        3000.0d0
+    end
+
+    active domain 
+    swf
+        choose all cells
+        swf recharge
+        5.56d-6
+        
+        clear chosen cells
+        choose gb cells
+        ./gb/grid.echos.Constant head cells
+        swf critical depth
+!         swf constant head
+!         3.0d0
+        
+    ! stress period 2
+    stress period
+        type
+        TR
+        
+        duration
+        3000.0d0
+    end
+
+    active domain 
+    swf
+        choose all cells
+        swf recharge
+        0.0d0
+        
+        
+        
+    generate output control file
+    8
+    300.0
+    600.0
+    900.0
+    1200.0
+    1500.0
+    3000.0
+    4500.0
+    6000.0
+     
+end

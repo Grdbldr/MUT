@@ -1,0 +1,24 @@
+ Volume in drive D is Code
+ Volume Serial Number is 886B-45A0
+
+ Directory of D:\hgs\trunk\verification\abdul\gb
+
+29/02/2012  01:25 PM             2,882 grid.ascii_bni
+29/02/2012  01:25 PM            27,174 grid.ascii_ean
+29/02/2012  01:25 PM             5,518 grid.ascii_echos.overland flow
+29/02/2012  01:25 PM             5,518 grid.ascii_echos.Stream
+29/02/2012  01:25 PM             5,518 grid.ascii_echos.stream channel
+29/02/2012  01:25 PM            54,819 grid.ascii_eprop.surface elevation
+29/02/2012  01:25 PM           197,694 grid.ascii_gbc
+29/02/2012  01:25 PM             5,235 grid.ascii_grd
+29/02/2012  01:25 PM           100,752 grid.ascii_in3
+29/02/2012  01:25 PM             2,896 grid.ascii_nchos.critical depth boundary
+29/02/2012  01:25 PM             2,896 grid.ascii_nchos.Outlet
+29/02/2012  01:25 PM             2,896 grid.ascii_nchos.Upstream
+29/02/2012  01:25 PM            28,599 grid.ascii_nprop.Surface elevation
+29/02/2012  01:25 PM            28,599 grid.ascii_nprop.Surface elevation - 0.5 m
+29/02/2012  01:25 PM            28,599 grid.ascii_nprop.Surface elevation - 1.5 m
+29/02/2012  01:25 PM           209,158 grid.ascii_seg
+29/02/2012  01:25 PM            85,078 grid.ascii_xyc
+              17 File(s)        793,831 bytes
+               0 Dir(s)  552,400,859,136 bytes free

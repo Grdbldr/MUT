@@ -1,0 +1,263 @@
+#!MC 1410
+$!VarSet |LFDSFN1| = '"_posto.modflow.VolumeBudget.tecplot.dat"'
+$!VarSet |LFDSVL1| = '"TOTAL TIME(SECONDS)" "IN_STORAGE" "IN_SWF STORAGE" "IN_CONSTANT HEAD" "IN_SWF CONST HEAD" "IN_RECHARGE" "IN_SWBC" "IN_TOTAL IN" "OUT_STORAGE" "OUT_SWF STORAGE" "OUT_CONSTANT HEAD" "OUT_SWF CONST HEAD" "OUT_RECHARGE" "OUT_SWBC" "TOTAL OUT" "IN - OUT" "PERCENT DISCREPANCY"'
+$!VarSet |LFDSFN2| = '"..\6_Abdul_Prism_Cell\_posto.modflow.VolumeBudget.tecplot.dat"'
+$!VarSet |LFDSVL2| = '"TOTAL TIME(SECONDS)" "IN_STORAGE" "IN_SWF STORAGE" "IN_CONSTANT HEAD" "IN_SWF CONST HEAD" "IN_RECHARGE" "IN_SWBC" "IN_TOTAL IN" "OUT_STORAGE" "OUT_SWF STORAGE" "OUT_CONSTANT HEAD" "OUT_SWF CONST HEAD" "OUT_RECHARGE" "OUT_SWBC" "TOTAL OUT" "IN - OUT" "PERCENT DISCREPANCY"'
+$!VarSet |LFDSFN3| = '"..\6_Abdul_Prism_Cell_calibrated_for_HGS\data\oh.dat"'
+$!VarSet |LFDSVL3| = '"TOTAL TIME(SECONDS)" "IN_STORAGE" "IN_SWF STORAGE" "IN_CONSTANT HEAD" "IN_SWF CONST HEAD" "IN_RECHARGE" "IN_SWBC" "IN_TOTAL IN" "OUT_STORAGE" "OUT_SWF STORAGE" "OUT_CONSTANT HEAD" "OUT_SWF CONST HEAD" "OUT_RECHARGE" "OUT_SWBC" "TOTAL OUT" "IN - OUT" "PERCENT DISCREPANCY" "Time(seconds)" "Discharge (m<sup>3</sup>/second)"'
+$!SetStyleBase Factory
+$!GlobalPaper 
+  PaperSizeInfo
+    {
+    Letter
+      {
+      Width = 8.5
+      Height = 11
+      LeftHardClipOffset = 0.125
+      RightHardClipOffset = 0.125
+      TopHardClipOffset = 0.125
+      BottomHardClipOffset = 0.125
+      }
+    }
+$!Page 
+  Name = 'Untitled'
+  PaperAttributes
+    {
+    BackgroundColor = White
+    IsTransparent = Yes
+    OrientPortrait = No
+    ShowGrid = Yes
+    ShowRuler = No
+    ShowPaper = No
+    PaperSize = Letter
+    RulerSpacing = OneInch
+    PaperGridSpacing = HalfInch
+    RegionInWorkArea
+      {
+      X1 = 1
+      Y1 = 0.25
+      X2 = 10
+      Y2 = 8.25
+      }
+    }
+### Frame Number 1 ###
+$!ReadDataSet  '|LFDSFN1|'
+  InitialPlotType = XYLine
+  IncludeText = No
+  IncludeGeom = No
+  ResetStyle = No
+  AssignStrandIDs = Yes
+  VarLoadMode = ByName
+  VarNameList = '|LFDSVL1|'
+$!RemoveVar |LFDSVL1|
+$!RemoveVar |LFDSFN1|
+$!ReadDataSet  '|LFDSFN2|'
+  InitialPlotType = XYLine
+  IncludeText = No
+  IncludeGeom = No
+  ReadDataOption = Append
+  ResetStyle = No
+  AssignStrandIDs = Yes
+  VarLoadMode = ByName
+  VarNameList = '|LFDSVL2|'
+$!RemoveVar |LFDSVL2|
+$!RemoveVar |LFDSFN2|
+$!ReadDataSet  '|LFDSFN3|'
+  InitialPlotType = XYLine
+  IncludeText = No
+  IncludeGeom = No
+  ReadDataOption = Append
+  ResetStyle = No
+  AssignStrandIDs = Yes
+  VarLoadMode = ByName
+  VarNameList = '|LFDSVL3|'
+$!RemoveVar |LFDSVL3|
+$!RemoveVar |LFDSFN3|
+$!RenameDataSetVar 
+  Var = 19
+  Name = 'Discharge (m<sup>3</sup>/second)'
+$!AlterData 
+  Equation = '{Discharge (m<sup>3</sup>/second)}=-{Discharge (m<sup>3</sup>/second)}'
+$!FrameLayout 
+  ShowHeader = No
+  HeaderColor = Red
+  XYPos
+    {
+    X = -1.335
+    Y = 0.25
+    }
+  Width = 13.637
+  Height = 8
+$!ThreeDAxis 
+  AspectRatioLimit = 25
+  BoxAspectRatioLimit = 25
+$!PlotType  = XYLine
+$!FrameName  = 'Frame 001'
+$!GlobalTime 
+  SolutionTime = 0
+$!DeleteLineMaps 
+$!ActiveLineMaps  =  [1-3]
+$!GlobalLinePlot 
+  DataLabels
+    {
+    DistanceSkip = 5
+    }
+  Legend
+    {
+    Show = Yes
+    TextShape
+      {
+      Height = 2
+      }
+    Box
+      {
+      BoxType = Filled
+      }
+    XYPos
+      {
+      X = 86.137
+      Y = 85.858
+      }
+    }
+$!LineMap  [1]
+  Name = '&DV& (&ZN&)'
+  Assign
+    {
+    Zone = 1
+    XAxisVar = 1
+    YAxisVar = 14
+    }
+  Lines
+    {
+    Color = Red
+    }
+  Symbols
+    {
+    Color = Blue
+    FillMode = UseBackgroundColor
+    FillColor = Red
+    Size = 0.5
+    }
+  BarCharts
+    {
+    Color = Red
+    FillColor = Red
+    }
+  ErrorBars
+    {
+    Color = Red
+    }
+$!LineMap  [2]
+  Name = '&DV& (&ZN&)'
+  Assign
+    {
+    Zone = 2
+    XAxisVar = 1
+    YAxisVar = 14
+    }
+  Lines
+    {
+    Color = Red
+    }
+  Symbols
+    {
+    Color = Black
+    FillMode = UseBackgroundColor
+    FillColor = Red
+    Size = 0.5
+    }
+  BarCharts
+    {
+    Color = Red
+    FillColor = Red
+    }
+  ErrorBars
+    {
+    Color = Red
+    }
+$!LineMap  [3]
+  Name = '&ZN&: &DV&'
+  Assign
+    {
+    Zone = 3
+    XAxisVar = 18
+    YAxisVar = 19
+    }
+  Lines
+    {
+    Color = Black
+    LineThickness = 0.4
+    }
+  Symbols
+    {
+    Color = Black
+    FillMode = UseBackgroundColor
+    FillColor = Red
+    Size = 0.5
+    }
+  BarCharts
+    {
+    Color = Red
+    FillColor = Red
+    }
+  ErrorBars
+    {
+    Color = Red
+    }
+$!XYLineAxis 
+  DepXToYRatio = 1
+  GridArea
+    {
+    DrawBorder = Yes
+    }
+  ViewportPosition
+    {
+    X1 = 12.879
+    Y1 = 10.692
+    X2 = 87.879
+    Y2 = 87.692
+    }
+  ViewportTopSnapTarget = 87.6916752312
+$!XYLineAxis 
+  XDetail 1
+    {
+    RangeMin = -421.19864485118137
+    RangeMax = 7578.8013551488175
+    GRSpacing = 1000
+    Gridlines
+      {
+      Show = Yes
+      }
+    MinorGridlines
+      {
+      Show = Yes
+      Color = Custom2
+      LinePattern = Solid
+      }
+    }
+$!XYLineAxis 
+  YDetail 1
+    {
+    RangeMin = -0.00017223742341933472
+    RangeMax = 0.0014277625765806655
+    GRSpacing = 0.0002
+    Gridlines
+      {
+      Show = Yes
+      }
+    MinorGridlines
+      {
+      Show = Yes
+      Color = Custom2
+      LinePattern = Solid
+      }
+    Title
+      {
+      Offset = 10
+      }
+    }
+$!LinePlotLayers 
+  ShowSymbols = Yes
+$!FrameControl ActivateByNumber
+  Frame = 1
+$!SetStyleBase Config

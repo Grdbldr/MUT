@@ -1,0 +1,4 @@
+# MODFLOW-USGs Constant-Head Boundary Package (CHD)
+    1  144     # number of nodes, cbc output unit(if>0)
+ 1
+202   1.0d0

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "GenMatrix", "GenMatrix\GenMatrix.vfproj", "{737EC385-BF96-4E5B-859F-D5B9F1D88584}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{737EC385-BF96-4E5B-859F-D5B9F1D88584}.Debug|x86.ActiveCfg = Debug|Win32
+		{737EC385-BF96-4E5B-859F-D5B9F1D88584}.Debug|x86.Build.0 = Debug|Win32
+		{737EC385-BF96-4E5B-859F-D5B9F1D88584}.Release|x86.ActiveCfg = Release|Win32
+		{737EC385-BF96-4E5B-859F-D5B9F1D88584}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1E823A0-01C6-4FCF-8150-65F25CF5AD1D}
+	EndGlobalSection
+EndGlobal

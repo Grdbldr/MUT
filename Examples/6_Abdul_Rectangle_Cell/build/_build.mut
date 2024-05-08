@@ -1,0 +1,83 @@
+! This example builds a modflow project from a Grid Builder 2D triangular mesh
+modflow_usg
+
+    modflow prefix
+    abdul-mc
+   
+   
+    2d mesh from gb
+	4
+    ./gwv/abdulrec_3
+    
+    generate swf domain
+        top elevation
+            elevation from gb file
+            ./gwv/abdulrec_3.nprop.elevation
+        end
+    end
+
+    
+    generate layered gwf domain
+        zone by layer
+        
+        top elevation
+            elevation from gb file
+            ./gwv/abdulrec_3.nprop.elevation
+        end
+    
+        new layer
+            layer name
+            Top layer
+    
+            uniform sublayering
+            5
+    
+            elevation from gb file
+            ./gwv/abdulrec_3.nprop.elevation-0.5m
+        end
+    
+        new layer
+            layer name
+            Middle layer
+    
+            uniform sublayering
+            5
+    
+            elevation from gb file
+            ./gwv/abdulrec_3.nprop.elevation-1.5m
+        end
+    
+        new layer
+            layer name
+            Base layer
+    
+            uniform sublayering
+            5
+    
+            elevation constant 
+            0.0
+        end
+    
+    
+    end 
+    
+
+    !assign recharge to swf domain
+    !5.56e-6
+    
+    !choose swf cells from gb
+    !./gb/grid.echos.Constant head cells
+    
+    !assign constant head to chosen swf cells
+    !3.0
+ 
+    generate output control file
+     3
+     60. 300. 3600.  
+    
+    stress periods
+    2
+    3000.  1   1.1   TR 
+    3000.  1   1.1   TR 
+
+end

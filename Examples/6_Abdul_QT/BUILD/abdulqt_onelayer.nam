@@ -1,0 +1,13 @@
+# MODFLOW-USG name file written by Groundwater Vistas
+#xll:0.000000; yll:0.000000; rotation:0.000000;
+LIST 7 abdulqt_onelayer.lst
+BAS6  1 abdulqt_onelayer.bas
+SMS  19 abdulqt_onelayer.sms
+DISU  29 abdulqt_onelayer.dis
+OC  22 abdulqt_onelayer.oc
+RCH  18 abdulqt_onelayer.rch
+LPF 11 abdulqt_onelayer.lpf
+DATA 166 abdulqt_onelayer_FlowReduction.dat
+DATA(BINARY) 50 abdulqt_onelayer.cbb
+DATA(BINARY) 30 abdulqt_onelayer.hds
+DATA(BINARY) 31 abdulqt_onelayer.ddn

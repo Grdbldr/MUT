@@ -1,0 +1,4 @@
+1. rectangular grid/basic properties/layers(15)
+2. import maps/assign HSU/QT smoothing/No Flow Boundary
+3. Elevations/Richards/Initial
+4. Refine Noflow BC/Pick BC nodes (CD)

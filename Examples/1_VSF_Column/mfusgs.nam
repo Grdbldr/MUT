@@ -1,0 +1,12 @@
+LIST 2 D:\MFUSG\test\1_VSF_Column\vsf.lst
+BAS6 1 D:\MFUSG\test\1_VSF_Column\vsf.bas
+LPF 11 D:\MFUSG\test\1_VSF_Column\vsf.lpf
+DISU 29 D:\MFUSG\test\1_VSF_Column\vsf.dis
+RCH 18 D:\MFUSG\test\1_VSF_Column\vsf.rch
+SMS 19 D:\MFUSG\test\1_VSF_Column\vsf.sms
+OC 22 D:\MFUSG\test\1_VSF_Column\vsf.oc
+CHD 199 D:\MFUSG\test\1_VSF_Column\vsf.chd
+DATA(BINARY) 50 D:\MFUSG\test\1_VSF_Column\vsf.cbb
+DATA(BINARY) 30 D:\MFUSG\test\1_VSF_Column\vsf.hds
+DATA(BINARY) 31 D:\MFUSG\test\1_VSF_Column\vsf.ddn
+DATA 166 D:\MFUSG\test\1_VSF_Column\vsf_flowreduction.dat

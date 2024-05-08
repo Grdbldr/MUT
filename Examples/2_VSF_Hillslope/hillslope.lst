@@ -1,0 +1,946 @@
+                                  USG-TRANSPORT USG-TRANSPORT 
+       FURTHER  DEVELOPMENTS BASED ON MODFLOW-USG
+                      VERSION USG-TRANSPORT VERSION 2.02.0
+
+ LIST FILE: hillslope.lst
+                         UNIT    7
+
+ OPENING hillslope.bas
+ FILE TYPE:BAS6   UNIT    1   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING hillslope.sms
+ FILE TYPE:SMS   UNIT   19   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING hillslope.dis
+ FILE TYPE:DISU   UNIT   29   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING hillslope.oc
+ FILE TYPE:OC   UNIT   22   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING hillslope.rch
+ FILE TYPE:RCH   UNIT   18   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING hillslope.drn
+ FILE TYPE:DRN   UNIT   13   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING hillslope_brooks.lpf
+ FILE TYPE:LPF   UNIT   11   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING hillslope_FlowReduction.dat
+ FILE TYPE:DATA   UNIT  166   STATUS:UNKNOWN
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING hillslope.gwf.cbb
+ FILE TYPE:DATA(BINARY)   UNIT   50   STATUS:UNKNOWN
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+
+ OPENING hillslope.gwf.hds
+ FILE TYPE:DATA(BINARY)   UNIT   30   STATUS:UNKNOWN
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+
+ OPENING hillslope.gwf.ddn
+ FILE TYPE:DATA(BINARY)   UNIT   31   STATUS:UNKNOWN
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+
+ BAS -- BASIC PACKAGEUSG-TRANSPORT USG-TRANSPORT VERSION 2.02.0             INPUT READ FROM UNIT    1
+ 
+ # MODFLOW-USGs Basic Package                                                    
+ # MODFLOW Data Set Created by Groundwater Vistas                                
+ #
+ THE FREE FORMAT OPTION HAS BEEN SELECTED
+ RICHARDS EQUATION SOLUTION
+ THE UNSTRUCTURED GRID OPTION HAS BEEN SELECTED
+
+ DIS -- UNSTRUCTURED GRID DISCRETIZATION PACKAGE, VERSION 1 : 5/17/2010 - INPUT READ FROM UNIT   29
+      50000 NODES        50 NLAY    247900 NJAG  VERT. SUBDISCRETIZATION INDEX, IVSD = -1
+ INDEX FOR INPUT OF UNSTRUCTURED, FINITE-VOLUME CONNECTIVITY INFORMATION, IDSYMRD =   0
+    1 STRESS PERIOD(S) IN SIMULATION
+ MODEL TIME UNIT IS YEARS
+ MODEL LENGTH UNIT IS METERS
+  Confining bed flag for each layer:
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0
+
+ DIS -- UNSTRUCTURED GRID DISCRETIZATION PACKAGE, VERSION 1 : 5/17/2010 - INPUT READ FROM UNIT   29
+
+   NO. OF NODES PER LAYER =      1000
+
+
+
+                                TOP FOR LAYER   1
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER   2
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER   3
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER   4
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER   5
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER   6
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER   7
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER   8
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER   9
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  10
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  11
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  12
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  13
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  14
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  15
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  16
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  17
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  18
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  19
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  20
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  21
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  22
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  23
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  24
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  25
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  26
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  27
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  28
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  29
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  30
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  31
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  32
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  33
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  34
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  35
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  36
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  37
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  38
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  39
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  40
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  41
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  42
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  43
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  44
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  45
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  46
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  47
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  48
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  49
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                TOP FOR LAYER  50
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER   1
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER   2
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER   3
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER   4
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER   5
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER   6
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER   7
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER   8
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER   9
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  10
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  11
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  12
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  13
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  14
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  15
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  16
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  17
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  18
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  19
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  20
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  21
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  22
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  23
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  24
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  25
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  26
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  27
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  28
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  29
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  30
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  31
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  32
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  33
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  34
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  35
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  36
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  37
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  38
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  39
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  40
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  41
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  42
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  43
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  44
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  45
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  46
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  47
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  48
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  49
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER  50
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+                     AREA =   1.00000     FOR LAYER   1
+
+
+
+                                 IA
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                 JA
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+               CONNECTION LENGTH 12 FOR LAYER   1
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                 PERPENDICULAR AREA
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+ STRESS PERIOD     LENGTH       TIME STEPS     MULTIPLIER FOR DELT    SS FLAG
+ ----------------------------------------------------------------------------
+        1         100000.0          1                    1.500         TR
+
+ TRANSIENT SIMULATION
+
+
+
+
+           BOUNDARY ARRAY =         1 FOR LAYER   1
+
+           BOUNDARY ARRAY =         1 FOR LAYER   2
+
+           BOUNDARY ARRAY =         1 FOR LAYER   3
+
+           BOUNDARY ARRAY =         1 FOR LAYER   4
+
+           BOUNDARY ARRAY =         1 FOR LAYER   5
+
+           BOUNDARY ARRAY =         1 FOR LAYER   6
+
+           BOUNDARY ARRAY =         1 FOR LAYER   7
+
+           BOUNDARY ARRAY =         1 FOR LAYER   8
+
+           BOUNDARY ARRAY =         1 FOR LAYER   9
+
+           BOUNDARY ARRAY =         1 FOR LAYER  10
+
+           BOUNDARY ARRAY =         1 FOR LAYER  11
+
+           BOUNDARY ARRAY =         1 FOR LAYER  12
+
+           BOUNDARY ARRAY =         1 FOR LAYER  13
+
+           BOUNDARY ARRAY =         1 FOR LAYER  14
+
+           BOUNDARY ARRAY =         1 FOR LAYER  15
+
+           BOUNDARY ARRAY =         1 FOR LAYER  16
+
+           BOUNDARY ARRAY =         1 FOR LAYER  17
+
+           BOUNDARY ARRAY =         1 FOR LAYER  18
+
+           BOUNDARY ARRAY =         1 FOR LAYER  19
+
+           BOUNDARY ARRAY =         1 FOR LAYER  20
+
+           BOUNDARY ARRAY =         1 FOR LAYER  21
+
+           BOUNDARY ARRAY =         1 FOR LAYER  22
+
+           BOUNDARY ARRAY =         1 FOR LAYER  23
+
+           BOUNDARY ARRAY =         1 FOR LAYER  24
+
+           BOUNDARY ARRAY =         1 FOR LAYER  25
+
+           BOUNDARY ARRAY =         1 FOR LAYER  26
+
+           BOUNDARY ARRAY =         1 FOR LAYER  27
+
+           BOUNDARY ARRAY =         1 FOR LAYER  28
+
+           BOUNDARY ARRAY =         1 FOR LAYER  29
+
+           BOUNDARY ARRAY =         1 FOR LAYER  30
+
+           BOUNDARY ARRAY =         1 FOR LAYER  31
+
+           BOUNDARY ARRAY =         1 FOR LAYER  32
+
+           BOUNDARY ARRAY =         1 FOR LAYER  33
+
+           BOUNDARY ARRAY =         1 FOR LAYER  34
+
+           BOUNDARY ARRAY =         1 FOR LAYER  35
+
+           BOUNDARY ARRAY =         1 FOR LAYER  36
+
+           BOUNDARY ARRAY =         1 FOR LAYER  37
+
+           BOUNDARY ARRAY =         1 FOR LAYER  38
+
+           BOUNDARY ARRAY =         1 FOR LAYER  39
+
+           BOUNDARY ARRAY =         1 FOR LAYER  40
+
+           BOUNDARY ARRAY =         1 FOR LAYER  41
+
+           BOUNDARY ARRAY =         1 FOR LAYER  42
+
+           BOUNDARY ARRAY =         1 FOR LAYER  43
+
+           BOUNDARY ARRAY =         1 FOR LAYER  44
+
+           BOUNDARY ARRAY =         1 FOR LAYER  45
+
+           BOUNDARY ARRAY =         1 FOR LAYER  46
+
+           BOUNDARY ARRAY =         1 FOR LAYER  47
+
+           BOUNDARY ARRAY =         1 FOR LAYER  48
+
+           BOUNDARY ARRAY =         1 FOR LAYER  49
+
+
+
+                     BOUNDARY ARRAY FOR LAYER  50
+ READING ON UNIT    1 WITH FORMAT: (FREE)              
+
+ AQUIFER HEAD WILL BE SET TO   999.00     AT ALL NO-FLOW NODES (IBOUND=0).
+
+             INITIAL HEAD =   0.00000     FOR LAYER   1
+
+             INITIAL HEAD =   0.00000     FOR LAYER   2
+
+             INITIAL HEAD =   0.00000     FOR LAYER   3
+
+             INITIAL HEAD =   0.00000     FOR LAYER   4
+
+             INITIAL HEAD =   0.00000     FOR LAYER   5
+
+             INITIAL HEAD =   0.00000     FOR LAYER   6
+
+             INITIAL HEAD =   0.00000     FOR LAYER   7
+
+             INITIAL HEAD =   0.00000     FOR LAYER   8
+
+             INITIAL HEAD =   0.00000     FOR LAYER   9
+
+             INITIAL HEAD =   0.00000     FOR LAYER  10
+
+             INITIAL HEAD =   0.00000     FOR LAYER  11
+
+             INITIAL HEAD =   0.00000     FOR LAYER  12
+
+             INITIAL HEAD =   0.00000     FOR LAYER  13
+
+             INITIAL HEAD =   0.00000     FOR LAYER  14
+
+             INITIAL HEAD =   0.00000     FOR LAYER  15
+
+             INITIAL HEAD =   0.00000     FOR LAYER  16
+
+             INITIAL HEAD =   0.00000     FOR LAYER  17
+
+             INITIAL HEAD =   0.00000     FOR LAYER  18
+
+             INITIAL HEAD =   0.00000     FOR LAYER  19
+
+             INITIAL HEAD =   0.00000     FOR LAYER  20
+
+             INITIAL HEAD =   0.00000     FOR LAYER  21
+
+             INITIAL HEAD =   0.00000     FOR LAYER  22
+
+             INITIAL HEAD =   0.00000     FOR LAYER  23
+
+             INITIAL HEAD =   0.00000     FOR LAYER  24
+
+             INITIAL HEAD =   0.00000     FOR LAYER  25
+
+             INITIAL HEAD =   0.00000     FOR LAYER  26
+
+             INITIAL HEAD =   0.00000     FOR LAYER  27
+
+             INITIAL HEAD =   0.00000     FOR LAYER  28
+
+             INITIAL HEAD =   0.00000     FOR LAYER  29
+
+             INITIAL HEAD =   0.00000     FOR LAYER  30
+
+             INITIAL HEAD =   0.00000     FOR LAYER  31
+
+             INITIAL HEAD =   0.00000     FOR LAYER  32
+
+             INITIAL HEAD =   0.00000     FOR LAYER  33
+
+             INITIAL HEAD =   0.00000     FOR LAYER  34
+
+             INITIAL HEAD =   0.00000     FOR LAYER  35
+
+             INITIAL HEAD =   0.00000     FOR LAYER  36
+
+             INITIAL HEAD =   0.00000     FOR LAYER  37
+
+             INITIAL HEAD =   0.00000     FOR LAYER  38
+
+             INITIAL HEAD =   0.00000     FOR LAYER  39
+
+             INITIAL HEAD =   0.00000     FOR LAYER  40
+
+             INITIAL HEAD =   0.00000     FOR LAYER  41
+
+             INITIAL HEAD =   0.00000     FOR LAYER  42
+
+             INITIAL HEAD =   0.00000     FOR LAYER  43
+
+             INITIAL HEAD =   0.00000     FOR LAYER  44
+
+             INITIAL HEAD =   0.00000     FOR LAYER  45
+
+             INITIAL HEAD =   0.00000     FOR LAYER  46
+
+             INITIAL HEAD =   0.00000     FOR LAYER  47
+
+             INITIAL HEAD =   0.00000     FOR LAYER  48
+
+             INITIAL HEAD =   0.00000     FOR LAYER  49
+
+             INITIAL HEAD =   0.00000     FOR LAYER  50
+
+ ADAPTIVE TIME STEPPING PERFORMED. ATS VARIABLES WILL BE READ.
+ -------------------------------------------------------------
+
+          OUTPUT WILL BE PRINTED AT FOLLOWING       3 TIMES
+          --------------------------------------------------
+   1000.000       10000.00       100000.0    
+
+ OUTPUT CONTROL IS SPECIFIED ONLY AT TIME STEPS FOR WHICH OUTPUT IS DESIRED
+ HEAD PRINT FORMAT CODE IS   0    DRAWDOWN PRINT FORMAT CODE IS   0
+ HEADS WILL BE SAVED ON UNIT   30    DRAWDOWNS WILL BE SAVED ON UNIT   31
+
+ LPF -- LAYER-PROPERTY FLOW PACKAGE, VERSION 7, 5/2/2005
+         INPUT READ FROM UNIT   11
+ # MODFLOW-USG Layer Property Flow (LPF) Package
+ CELL-BY-CELL FLOWS WILL BE SAVED ON UNIT   50
+ HEAD AT CELLS THAT CONVERT TO DRY= -1.00000E+30
+ No named parameters
+ IKCFLAG=0, NODAL INPUT OF HY AND CV
+ CONSTANTCV OPTION:
+ Constant vertical conductance for convertible layers
+ NOVFC OPTION:
+ Do not apply the vertical flow correction
+
+   LAYER FLAGS:
+ LAYER       LAYTYP        LAYAVG         CHANI        LAYVKA        LAYWET
+ ---------------------------------------------------------------------------
+    1             4             0     1.000E+00             0             0
+    2             4             0     1.000E+00             0             0
+    3             4             0     1.000E+00             0             0
+    4             4             0     1.000E+00             0             0
+    5             4             0     1.000E+00             0             0
+    6             4             0     1.000E+00             0             0
+    7             4             0     1.000E+00             0             0
+    8             4             0     1.000E+00             0             0
+    9             4             0     1.000E+00             0             0
+   10             4             0     1.000E+00             0             0
+   11             4             0     1.000E+00             0             0
+   12             4             0     1.000E+00             0             0
+   13             4             0     1.000E+00             0             0
+   14             4             0     1.000E+00             0             0
+   15             4             0     1.000E+00             0             0
+   16             4             0     1.000E+00             0             0
+   17             4             0     1.000E+00             0             0
+   18             4             0     1.000E+00             0             0
+   19             4             0     1.000E+00             0             0
+   20             4             0     1.000E+00             0             0
+   21             4             0     1.000E+00             0             0
+   22             4             0     1.000E+00             0             0
+   23             4             0     1.000E+00             0             0
+   24             4             0     1.000E+00             0             0
+   25             4             0     1.000E+00             0             0
+   26             4             0     1.000E+00             0             0
+   27             4             0     1.000E+00             0             0
+   28             4             0     1.000E+00             0             0
+   29             4             0     1.000E+00             0             0
+   30             4             0     1.000E+00             0             0
+   31             4             0     1.000E+00             0             0
+   32             4             0     1.000E+00             0             0
+   33             4             0     1.000E+00             0             0
+   34             4             0     1.000E+00             0             0
+   35             4             0     1.000E+00             0             0
+   36             4             0     1.000E+00             0             0
+   37             4             0     1.000E+00             0             0
+   38             4             0     1.000E+00             0             0
+   39             4             0     1.000E+00             0             0
+   40             4             0     1.000E+00             0             0
+   41             4             0     1.000E+00             0             0
+   42             4             0     1.000E+00             0             0
+   43             4             0     1.000E+00             0             0
+   44             4             0     1.000E+00             0             0
+   45             4             0     1.000E+00             0             0
+   46             4             0     1.000E+00             0             0
+   47             4             0     1.000E+00             0             0
+   48             4             0     1.000E+00             0             0
+   49             4             0     1.000E+00             0             0
+   50             4             0     1.000E+00             0             0
+
+   INTERPRETATION OF LAYER FLAGS:
+                        INTERBLOCK     HORIZONTAL    DATA IN
+         LAYER TYPE   TRANSMISSIVITY   ANISOTROPY   ARRAY VKA   WETTABILITY
+ LAYER      (LAYTYP)      (LAYAVG)       (CHANI)      (LAYVKA)      (LAYWET)
+ ---------------------------------------------------------------------------
+    1     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+    2     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+    3     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+    4     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+    5     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+    6     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+    7     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+    8     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+    9     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   10     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   11     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   12     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   13     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   14     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   15     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   16     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   17     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   18     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   19     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   20     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   21     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   22     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   23     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   24     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   25     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   26     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   27     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   28     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   29     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   30     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   31     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   32     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   33     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   34     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   35     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   36     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   37     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   38     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   39     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   40     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   41     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   42     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   43     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   44     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   45     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   46     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   47     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   48     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   49     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+   50     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+
+ WETTING CAPABILITY IS NOT ACTIVE IN ANY LAYER

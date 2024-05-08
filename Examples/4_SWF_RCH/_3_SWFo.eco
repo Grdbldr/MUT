@@ -1,0 +1,304 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+@@                                                                      @@ 
+@@                    MUT          1.03                                 @@ 
+@@                    Run date 20231211                                 @@ 
+@@                                                                      @@ 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+Echo file: _3_SWFo.eco                                                                                                                                                                                             
+User input file: _3_SWF.mut
+Stripping comments and blank lines...
+! stopwatch
+! 1
+! mut
+!
+! elapsed time
+! 1
+...done stripping comments.
+!-----------------------
+MUT:modflow_usg                                                 
+!-----------------------
+MUSG:process modflow files                                                                                                                                                                                                                                           
+Modflow project prefix: swf1                                                                                                                            
+Opened ascii NAM file:  swf1.nam
+Reading from unit:   102
+ 
+-------Open and scan files listed in NAM file:
+
+ OPENING swf1.bas
+ FILE TYPE:BAS6   UNIT    1   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING swf1.sms
+ FILE TYPE:SMS   UNIT   19   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING swf1.dis
+ FILE TYPE:DISU   UNIT   29   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING swf1.oc
+ FILE TYPE:OC   UNIT   22   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING swf1.chd
+ FILE TYPE:CHD   UNIT   23   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING swf1.rch
+ FILE TYPE:RCH   UNIT    2   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING swf1.lpf
+ FILE TYPE:LPF   UNIT   11   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING swf1.swf
+ FILE TYPE:SWF   UNIT   65   STATUS:OLD    
+ FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
+
+ OPENING swf1.swf.cbb
+ FILE TYPE:DATA(BINARY)   UNIT  144   STATUS:UNKNOWN
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+
+ OPENING swf1.swf.hds
+ FILE TYPE:DATA(BINARY)   UNIT  145   STATUS:UNKNOWN
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+
+ OPENING swf1.swf.ddn
+ FILE TYPE:DATA(BINARY)   UNIT  146   STATUS:UNKNOWN
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+
+ OPENING swf1.gwf.cbb
+ FILE TYPE:DATA(BINARY)   UNIT   50   STATUS:UNKNOWN
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+
+ OPENING swf1.gwf.hds
+ FILE TYPE:DATA(BINARY)   UNIT   30   STATUS:UNKNOWN
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+
+ OPENING swf1.gwf.ddn
+ FILE TYPE:DATA(BINARY)   UNIT   31   STATUS:UNKNOWN
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+ 
+-------Read all GSF (grid specification) files:
+Modflow GWF GSF file: swf1.gwf.gsf                                                                                                                    
+nCell:        101                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+Modflow SWF GSF file: swf1.swf.gsf                                                                                                                    
+nCell:        101                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+ 
+-------Read options from BAS6:
+ 
+ # MODFLOW-USGs Basic Package                                                    
+ # MODFLOW Data Set Created by Groundwater Vistas                                
+ #
+ THE FREE FORMAT OPTION HAS BEEN SELECTED
+ THE UNSTRUCTURED GRID OPTION HAS BEEN SELECTED
+ 
+-------Read first part of DISU:
+
+ DIS -- UNSTRUCTURED GRID DISCRETIZATION PACKAGE, VERSION 1 : 5/17/2010 - INPUT READ FROM UNIT   29
+        101 NODES         1 NLAY       301 NJAG  VERT. SUBDISCRETIZATION INDEX, IVSD = -1
+ INDEX FOR INPUT OF UNSTRUCTURED, FINITE-VOLUME CONNECTIVITY INFORMATION, IDSYMRD =   0
+    1 STRESS PERIOD(S) IN SIMULATION
+ MODEL TIME UNIT IS SECONDS
+ MODEL LENGTH UNIT IS METERS
+  Confining bed flag for each layer:
+   0
+ 
+-------Read data from SWF pt1:
+
+ SWF -- SURFACE WATER FLOW (SWF) DISCRETIZATION PROCESS, VERSION 1, 10/1/2023 INPUT READ FROM UNIT   65
+
+
+
+                                 IA
+ READING ON UNIT   65 WITH FORMAT: (FREE)              
+
+
+
+                                 JA
+ READING ON UNIT   65 WITH FORMAT: (FREE)              
+ 
+-------Read second part DISU:
+
+ DIS -- UNSTRUCTURED GRID DISCRETIZATION PACKAGE, VERSION 1 : 5/17/2010 - INPUT READ FROM UNIT   29
+
+   NO. OF NODES PER LAYER =       101
+
+
+
+                                TOP FOR LAYER   1
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                BOT FOR LAYER   1
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                               AREA FOR LAYER   1
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                 IA
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                                 JA
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+               CONNECTION LENGTH 12
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+
+
+
+                 PERPENDICULAR AREA
+ READING ON UNIT   29 WITH FORMAT: (FREE)              
+ 
+-------Read Stress Period Data from DISU:
+
+
+ STRESS PERIOD     LENGTH       TIME STEPS     multiplier FOR DELT    SS FLAG
+ ----------------------------------------------------------------------------
+ $$$ urword real:    2420.31300000000     
+        1         2420.313      10000                    1.100         TR
+
+ TRANSIENT SIMULATION
+ 
+-------Read IBOUND and initial heads from BAS6:
+
+
+
+                     BOUNDARY ARRAY FOR LAYER   1
+ READING ON UNIT    1 WITH FORMAT: (FREE)              
+
+ AQUIFER HEAD WILL BE SET TO   999.00     AT ALL NO-FLOW NODES (IBOUND=0).
+
+             INITIAL HEAD =   100.000     FOR LAYER   1
+ 
+-------Read data from OC:
+
+ ADAPTIVE TIME STEPPING PERFORMED. ATS VARIABLES WILL BE READ.
+ -------------------------------------------------------------
+
+          OUTPUT WILL BE PRINTED AT FOLLOWING       1 TIMES
+          --------------------------------------------------
+   242.3130    
+
+ OUTPUT CONTROL IS SPECIFIED ONLY AT TIME STEPS FOR WHICH OUTPUT IS DESIRED
+ HEAD PRINT FORMAT CODE IS   0    DRAWDOWN PRINT FORMAT CODE IS   0
+ HEADS WILL BE SAVED ON UNIT   30    DRAWDOWNS WILL BE SAVED ON UNIT   31
+ 
+-------Read data from LPF:
+
+ LPF -- LAYER-PROPERTY FLOW PACKAGE, VERSION 7, 5/2/2005
+         INPUT READ FROM UNIT   11
+ # MODFLOW-USG Layer Property Flow (LPF) Package
+ CELL-BY-CELL FLOWS WILL BE SAVED ON UNIT   50
+ HEAD AT CELLS THAT CONVERT TO DRY= -1.00000E+30
+ No named parameters
+ IKCFLAG=0, NODAL INPUT OF HY AND CV
+ CONSTANTCV OPTION:
+ Constant vertical conductance for convertible layers
+ NOVFC OPTION:
+ Do not apply the vertical flow correction
+
+   LAYER FLAGS:
+ LAYER       LAYTYP        LAYAVG         CHANI        LAYVKA        LAYWET
+ ---------------------------------------------------------------------------
+    1             4             0     1.000E+00             0             0
+
+   INTERPRETATION OF LAYER FLAGS:
+                        INTERBLOCK     HORIZONTAL    DATA IN
+         LAYER TYPE   TRANSMISSIVITY   ANISOTROPY   ARRAY VKA   WETTABILITY
+ LAYER      (LAYTYP)      (LAYAVG)       (CHANI)      (LAYVKA)      (LAYWET)
+ ---------------------------------------------------------------------------
+    1     UPSTREAM       HARMONIC     1.000E+00    VERTICAL K  NON-WETTABLE
+
+ WETTING CAPABILITY IS NOT ACTIVE IN ANY LAYER
+
+
+
+              HYD. COND. ALONG ROWS FOR LAYER   1
+ READING ON UNIT   11 WITH FORMAT: (FREE)              
+
+
+
+                VERTICAL HYD. COND. FOR LAYER   1
+ READING ON UNIT   11 WITH FORMAT: (FREE)              
+
+
+
+                   SPECIFIC STORAGE FOR LAYER   1
+ READING ON UNIT   11 WITH FORMAT: (FREE)              
+
+
+
+                     SPECIFIC YIELD FOR LAYER   1
+ READING ON UNIT   11 WITH FORMAT: (FREE)              
+ 
+-------Read IBOUND and initial heads from SWF:
+
+ SWF -- SURFACE DOMAIN FLOW PACKAGE, VERSION 1, 5/17/2010 INPUT READ FROM UNIT   65
+
+      SWF BOUNDARY ARRAY  =         1
+
+
+
+                  SWF INITIAL HEAD 
+ READING ON UNIT   65 WITH FORMAT: (FREE)              
+ 
+-------Read data from CHD:
+
+ CHD -- TIME-VARIANT SPECIFIED-HEAD OPTION, VERSION 7, 5/2/2005
+ INPUT READ FROM UNIT   23
+ # MODFLOW-USGs Constant-Head Boundary Package (CHD)
+ No named parameters
+ MAXIMUM OF      1 TIME-VARIANT SPECIFIED-HEAD CELLS AT ONE TIME
+
+
+     0 TIME-VARIANT SPECIFIED-HEAD PARAMETERS
+ 
+-------Read data from RCH:
+
+ RCH -- RECHARGE PACKAGE, VERSION 7, 5/2/2005 INPUT READ FROM UNIT    2
+ # MODFLOW-USGs Recharge Package
+ No named parameters
+ CELL-BY-CELL FLOWS WILL BE SAVED ON UNIT   50
+
+
+     0 Recharge parameters
+
+ RCH -- RECHARGE PACKAGE, VERSION 7, 5/2/2005 INPUT READ FROM UNIT    2
+
+
+
+                           RECHARGE
+ READING ON UNIT    2 WITH FORMAT: (FREE)              
+To File: _3_SWFo.swf1.VolumeBudget.tecplot.dat
+Time step, stress period, time to file: _3_SWFo.StepPeriodTime
+Generating mesh-based Tecplot output files for GWF:
+To File: _3_SWFo.swf1.GWF.HDS_DDN.tecplot.dat
+To File: _3_SWFo.swf1.GWF.IBOUND.tecplot.dat
+To File: _3_SWFo.swf1.GWF.CBB.tecplot.dat
+ 
+Reading SWF head data from unit   145 file swf1.swf.ddn                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+    Period      Step      Time Cell1Head            Name
+         1       128   242.313     2.084       SWF HEADS                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+ 
+Reading SWF saturation(DDN) data from unit   146 file                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    Period      Step      Time Cell1Head            Name
+         1       128   242.313    -0.084    SWF DRAWDOWN                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+Generating mesh-based Tecplot output files for SWF:
+To File: _3_SWFo.swf1.SWF.HDS_DDN.tecplot.dat
+!-----------------------
+MUSG:end                                                                                                                                                                                                                                                             
+!-----------------------
+MUT: Normal exit

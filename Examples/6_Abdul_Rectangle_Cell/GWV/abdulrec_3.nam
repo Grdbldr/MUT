@@ -1,0 +1,12 @@
+# MODFLOW-USG name file written by Groundwater Vistas
+#xll:0.000000; yll:0.000000; rotation:0.000000;
+LIST 7 abdulrec_3.lst
+BAS6  1 abdulrec_3.bas
+SMS  19 abdulrec_3.sms
+DISU  29 abdulrec_3.dis
+OC  22 abdulrec_3.oc
+LPF 11 abdulrec_3.lpf
+DATA 166 abdulrec_3_FlowReduction.dat
+DATA(BINARY) 50 abdulrec_3.cbb
+DATA(BINARY) 30 abdulrec_3.hds
+DATA(BINARY) 31 abdulrec_3.ddn
