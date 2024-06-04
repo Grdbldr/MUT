@@ -1,0 +1,5 @@
+"SWF Material ID","Material Name","Manning's coefficient","Depression storage height","Obstruction storage height","Swf-gwf connection length"
+1,"Streambed",0.03,0.10,0.00,1.0e-03
+2,"Grass",0.30,0.10,0.00,1.0e-03
+3,"Panday slope",0.01,0.01,0.00,1.00
+4,"Panday channel",0.15,0.01,0.00,1.00

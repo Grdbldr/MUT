@@ -52,6 +52,7 @@
 		<File RelativePath=".\fem.f90"/>
 		<File RelativePath=".\GeneralRoutines.f90"/>
 		<File RelativePath=".\HGS.f90"/>
+		<File RelativePath=".\Materials.f90"/>
 		<File RelativePath=".\Modflow_USG.f90"/>
 		<File RelativePath=".\openspec.inc"/>
 		<File RelativePath=".\pre.f90"/>

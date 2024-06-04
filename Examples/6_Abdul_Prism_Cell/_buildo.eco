@@ -1,0 +1,105 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+@@                                                                      @@ 
+@@                    MUT          1.16                                 @@ 
+@@                    Run date 20240604                                 @@ 
+@@                                                                      @@ 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+ 
+<--- Read User input file: _build.mut
+ 
+---> New Echo file: _buildo.eco                                                                                                                                                                                             
+ 
+Stripping comments and blank lines...
+! This example builds a modflow project from a Grid Builder 2D triangular mesh
+! -----------------------------------Grid definition
+! Required later for building Modflow project
+! -----------------------------------Static properties
+! -----------------------------------Stress periods, boundary conditions
+! stress period 1
+! Required later for building Modflow project
+!         swf constant head
+!         3.0d0
+! stress period 2
+! -----------------------------------Output Control
+...done stripping comments.
+ 
+---> New Stripped input file: _buildo.input                                                                                                                                                                                           
+ 
+modflow_usg                                                 
+ 
+  materials database                                                                                                                                                                                                                                              
+		Materials file ..\..\database\GWF_Materials.txt
+ 
+  2d mesh from gb                                                                                                                                                                                                                                                 
+        Number of nodes                   1372                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+        Number of elements                   2651                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+  
+---> New Tecplot file: _buildo.TMPLT.tecplot.dat
+  
+---> New Tecplot file: scratcho.TMPLT.tecplot.dat
+ 
+  Generating IA/JA and cell connection arrays for domain TMPLT...
+ 
+  clear chosen nodes                                                                                                                                                                                                                                              
+ 
+  choose gb nodes                                                                                                                                                                                                                                                 
+	Choose nodes from ./gb/grid.nchos.Outer boundary nodes
+	TMPLT nodes chosen:         91
+ 
+  flag chosen nodes as outer boundary                                                                                                                                                                                                                             
+ 
+  generate swf domain                                                                                                                                                                                                                                             
+
+      top elevation                                                                                                                                                                                                                                                   
+          elevation from gb file                                                                                                                                                                                                                                          
+              Top elevation from ./gb/grid.nprop.Surface elevation
+  
+---> New Tecplot file: scratcho.TECPLOT_SWF.tecplot.dat
+ 
+  Generating IA/JA and cell connection arrays for domain TECPLOT_SWF...
+ 
+  generate layered gwf domain                                                                                                                                                                                                                                     
+
+      top elevation                                                                                                                                                                                                                                                   
+          elevation from gb file                                                                                                                                                                                                                                          
+              Top elevation from ./gb/grid.nprop.Surface elevation
+
+      new layer                                                                                                                                                                                                                                                       
+          layer name                                                                                                                                                                                                                                                      
+              Top layer                                                   
+          uniform sublayering                                                                                                                                                                                                                                             
+              Number of uniform sublayers    5
+          elevation from gb file                                                                                                                                                                                                                                          
+              Base elevation from ./gb/grid.nprop.Surface elevation - 0.5 m
+
+      new layer                                                                                                                                                                                                                                                       
+          layer name                                                                                                                                                                                                                                                      
+              Middle layer                                                
+          uniform sublayering                                                                                                                                                                                                                                             
+              Number of uniform sublayers    5
+          elevation from gb file                                                                                                                                                                                                                                          
+              Base elevation from ./gb/grid.nprop.Surface elevation - 1.5 m
+
+      new layer                                                                                                                                                                                                                                                       
+          layer name                                                                                                                                                                                                                                                      
+              Base layer                                                  
+          uniform sublayering                                                                                                                                                                                                                                             
+              Number of uniform sublayers    5
+          elevation constant                                                                                                                                                                                                                                              
+               0.0000
+  
+---> New Tecplot file: scratcho.TECPLOT_GWF.tecplot.dat
+ 
+  Generating IA/JA and cell connection arrays for domain TECPLOT_GWF...
+  ...done
+ 
+  active domain                                                                                                                                                                                                                                                   
+	gwf
+ 
+  choose all cells                                                                                                                                                                                                                                                
+	GWF Cells chosen:      39765
+ 
+  gwf material                                                                                                                                                                                                                                                    
+	Assigning all chosen GWF cells properties of material      4.0000, Borden sand
