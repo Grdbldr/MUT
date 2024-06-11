@@ -4188,7 +4188,7 @@ module HGS !
 !        
 !        
 !        integer :: nvar
-!        integer :: nMaterials
+!        integer :: nGWFMaterials
 !        character(MAXLBL), allocatable :: ColumnName(:)
 !        character(MAXLBL), allocatable ::   Description(:)
 !        real(dr), allocatable ::            Kxx(:)
@@ -4233,27 +4233,27 @@ module HGS !
 !            line=line(i1+1:)
 !        end do
 !
-!        nMaterials=0
+!        nGWFMaterials=0
 !        do ! count materials
 !            read(FnumCSV,'(a)',iostat=status) line
 !            if(status/=0) exit
 !
-!            nMaterials=nMaterials+1
+!            nGWFMaterials=nGWFMaterials+1
 !        end do
 !        
-!        allocate(Description(nMaterials), &
-!                 Kxx(nMaterials), &
-!                 Kyy(nMaterials), &
-!                 Kzz(nMaterials), &
-!                 Porosity(nMaterials), &
-!                 SpecificStorage(nMaterials), &
-!                 SoilRetnFileName(nMaterials))
+!        allocate(Description(nGWFMaterials), &
+!                 Kxx(nGWFMaterials), &
+!                 Kyy(nGWFMaterials), &
+!                 Kzz(nGWFMaterials), &
+!                 Porosity(nGWFMaterials), &
+!                 SpecificStorage(nGWFMaterials), &
+!                 SoilRetnFileName(nGWFMaterials))
 !        
 !        
 !        
 !        rewind(FnumCSV)
 !        read(FnumCSV,'(a)') line
-!        do i=1,nMaterials
+!        do i=1,nGWFMaterials
 !            read(FnumCSV,'(a)',iostat=status) line
 !            if(status/=0) exit
 !            
@@ -4297,7 +4297,7 @@ module HGS !
 !        write(FNum,'(a,f12.5)') '! **** NOTE: Input K in m/s are multiplied by ',KMult
 !
 !
-!        do i=1,nMaterials
+!        do i=1,nGWFMaterials
 !            write(FNum,'(a)') '! -------------------------------------------------'
 !            write(FNum,'(a,i5)') '! ------------------------------Material '
 !            write(FNum,'(a,i5)') Description(i)

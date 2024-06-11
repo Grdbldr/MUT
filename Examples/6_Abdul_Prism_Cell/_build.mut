@@ -1,8 +1,11 @@
 ! This example builds a modflow project from a Grid Builder 2D triangular mesh
 modflow_usg
 
-    materials database
+    gwf materials database
     ..\..\database\GWF_Materials.txt
+
+    swf materials database
+    ..\..\database\SWF_Materials.txt
 
     ! -----------------------------------Grid definition
     2d mesh from gb

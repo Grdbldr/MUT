@@ -1,6 +1,8 @@
 modflow_usg
-materials database
+gwf materials database
 ..\..\database\GWF_Materials.txt
+swf materials database
+..\..\database\SWF_Materials.txt
 2d mesh from gb
 ./gb/grid
 clear chosen nodes

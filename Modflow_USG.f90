@@ -22,7 +22,9 @@
     character(60) :: MUSG_NodalControlVolumes_CMD='nodal control volumes'
 
     ! 
-    character(60) :: MUSG_MaterialsDatabase_CMD	=   'materials database'
+    character(60) :: MUSG_GWFMaterialsDatabase_CMD	=   'gwf materials database'
+    character(60) :: MUSG_SWFMaterialsDatabase_CMD	=   'swf materials database'
+    character(60) :: MUSG_ET_Database_CMD	=   'et database'
 
     ! Ways to define the 2D template mesh
     character(60) :: MUSG_2dMeshFromGb_CMD='2d mesh from gb'
@@ -692,10 +694,15 @@
                 Modflow.NodalControlVolume=.true.
                 call Msg(TAB//'*** Control volumes (i.e. modflow cells) will be centred at 2D mesh nodes')
             
-            else if(index(MUSG_CMD, MUSG_MaterialsDatabase_CMD)  /= 0) then
-                ! Generate node centred control volume domains (default is mesh centred)
+            else if(index(MUSG_CMD, MUSG_GWFMaterialsDatabase_CMD)  /= 0) then
                 read(FnumMUT,'(a)') FName
-                call DB_ReadMaterials(FName) 
+                call DB_ReadGWFMaterials(FName) 
+            else if(index(MUSG_CMD, MUSG_SWFMaterialsDatabase_CMD)  /= 0) then
+                read(FnumMUT,'(a)') FName
+                call DB_ReadSWFMaterials(FName) 
+            else if(index(MUSG_CMD, MUSG_ET_Database_CMD)  /= 0) then
+                read(FnumMUT,'(a)') FName
+                call DB_ReadET(FName) 
                 
             else if(index(MUSG_CMD, MUSG_2dMeshFromGb_CMD)  /= 0) then
                 ! Build the 2D template mesh from a grdbldr 2D mesh
@@ -1040,22 +1047,22 @@
 
     end subroutine ProcessModflowUSG
    
-    !----------------------------------------------------------------------
-    subroutine DefineMaterialsDB(FNumMUT)
-        implicit none
-
-        integer :: FNumMUT
-        type (ModflowDomain) Domain
-        
-        integer :: i
-        integer :: maxnnp
-
-	    character(256) :: header
-
-		read(FNumMUT,'(a)') FName
-		call Msg(TAB//TAB//'Materials read from file '//trim(FName))
-    
-    end subroutine DefineMaterialsDB
+  !  !----------------------------------------------------------------------
+  !  subroutine DefineMaterialsDB(FNumMUT)
+  !      implicit none
+  !
+  !      integer :: FNumMUT
+  !      type (ModflowDomain) Domain
+  !      
+  !      integer :: i
+  !      integer :: maxnnp
+  !
+	 !   character(256) :: header
+  !
+		!read(FNumMUT,'(a)') FName
+		!call Msg(TAB//TAB//'Materials read from file '//trim(FName))
+  !  
+  !  end subroutine DefineMaterialsDB
     
     ! Pre-processing instructions
     !----------------------------------------------------------------------
@@ -1516,7 +1523,7 @@
         type (TecplotDomain) TMPLT
 
         integer :: i, j
-	    integer :: nLayer_bot, nLayer_top, ncount, iNode
+	    integer :: nLayer_bot, nLayer_top, ncount
 
         character*80 :: fname
         character*80 :: dummy
@@ -1947,7 +1954,12 @@
         
         read(FNumMUT,*) iMaterial
         write(TmpSTR,'(g15.5)') iMaterial
-		call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells properties of material '//trim(TmpSTR)//', '//trim(MaterialName(iMaterial)))
+        
+        if(domain.name == 'GWF') then
+		    call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells properties of material '//trim(TmpSTR)//', '//trim(GWFMaterialName(iMaterial)))
+        else if(domain.name == 'SWF') then
+		    call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells properties of material '//trim(TmpSTR)//', '//trim(SWFMaterialName(iMaterial)))
+        end if
         
         do i=1,domain.nCells
             if(bcheck(domain.Cell_is(i),chosen)) then
@@ -1960,9 +1972,12 @@
                     domain.Alpha(i)=Alpha(iMaterial)
                     domain.Beta(i)=Beta(iMaterial)
                     domain.Sr(i)=Sr(iMaterial)
-                !else if(domain.name == 'SWF') then
-                !    domain.Sgcl(i)=Sgcl(iMaterial)
-                !    domain.CriticalDepthLength(i)=CriticalDepthLength(iMaterial)
+
+                else if(domain.name == 'SWF') then
+                    domain.Manning(i)=ManningCoefficient(iMaterial)
+                    domain.Sgcl(i)=SWF_GWF_ConnectionLength(iMaterial)
+                    !domain.DepressionStorageHeight(i)=DepressionStorageHeight(iMaterial)
+                    !domain.ObstructionStorageHeight(i)=ObstructionStorageHeight(i)
                 endif
 
                 call Msg('Tabular inputs not implemented yet')
@@ -2569,7 +2584,6 @@
     
         type (ModflowProject) Modflow
         type (TecplotDomain) TMPLT
-        type (TecplotDomain) TECPLOT_SWF
         type (TecplotDomain) TECPLOT_GWF
 
         integer :: i, j, k
