@@ -1,0 +1,14 @@
+# MODFLOW-USG name file written by Groundwater Vistas
+#xll:0.000000; yll:0.000000; rotation:1.000000;
+LIST 7 vsf.lst
+BAS6  1 vsf.bas
+SMS  19 vsf.sms
+DISU  29 vsf.dis
+OC  22 vsf.oc
+RCH  18 vsf.rch
+CHD  199 vsf.chd
+LPF 11 vsf.lpf
+DATA 166 vsf_FlowReduction.dat
+DATA(BINARY) 50 vsf.cbb
+DATA(BINARY) 30 vsf.hds
+DATA(BINARY) 31 vsf.ddn
