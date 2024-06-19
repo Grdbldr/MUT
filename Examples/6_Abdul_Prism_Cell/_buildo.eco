@@ -1,0 +1,36 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+@@                                                                      @@ 
+@@                    MUT          1.16                                 @@ 
+@@                    Run date 20240607                                 @@ 
+@@                                                                      @@ 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+ 
+<--- Read User input file: _build.mut
+ 
+---> New Echo file: _buildo.eco                                                                                                                                                                                             
+ 
+Stripping comments and blank lines...
+! This example builds a modflow project from a Grid Builder 2D triangular mesh
+! -----------------------------------Grid definition
+! Required later for building Modflow project
+! -----------------------------------Static properties
+! -----------------------------------Stress periods, boundary conditions
+! stress period 1
+! Required later for building Modflow project
+!         swf constant head
+!         3.0d0
+! stress period 2
+! -----------------------------------Output Control
+...done stripping comments.
+ 
+---> New Stripped input file: _buildo.input                                                                                                                                                                                           
+ 
+modflow_usg                                                 
+ 
+  gwf materials database                                                                                                                                                                                                                                          
+		Materials file ..\..\database\GWF_Materials.txt
+ 
+  swf materials database                                                                                                                                                                                                                                          
+		Materials file ..\..\database\SWF_Materials.txt

@@ -1,6 +1,12 @@
 ! This example builds a modflow project from a Grid Builder 2D triangular mesh
 modflow_usg
 
+    gwf materials database
+    ..\..\database\GWF_Materials.txt
+
+    swf materials database
+    ..\..\database\SWF_Materials.txt
+
     ! -----------------------------------Grid definition
     2d mesh from gb
     ./gb/grid
@@ -68,24 +74,12 @@ modflow_usg
     
         choose all cells
         
-        gwf kh
-        1d-5
-        gwf kv
-        1d-5
-        gwf ss
-        1.2d-7
-        gwf sy
-        0.34d0
-        gwf alpha
-        1.9d0
-        gwf beta
-        6.d0
-        gwf sr
-        0.18d0
-        gwf brooks
-        -1.0d0
+        gwf material
+        4
+        
         gwf initial head
         2.78d0
+    
     
     active domain 
     swf

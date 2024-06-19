@@ -2,6 +2,7 @@
     use GeneralRoutines
     !use ProcessCSV
     use fem
+    use materials
     use tecplot
     use global
     use CLN1MODULE
@@ -19,6 +20,11 @@
     ! By default, the 2D template mesh is converted to Modflow mesh using a mesh-centred control volume approach
     ! This option changes it to a node-centred control volume approach
     character(60) :: MUSG_NodalControlVolumes_CMD='nodal control volumes'
+
+    ! 
+    character(60) :: MUSG_GWFMaterialsDatabase_CMD	=   'gwf materials database'
+    character(60) :: MUSG_SWFMaterialsDatabase_CMD	=   'swf materials database'
+    character(60) :: MUSG_ET_Database_CMD	=   'et database'
 
     ! Ways to define the 2D template mesh
     character(60) :: MUSG_2dMeshFromGb_CMD='2d mesh from gb'
@@ -72,13 +78,19 @@
     character(60) :: MUSG_FlagChosenNodesAsOuterBoundary_CMD		=   'flag chosen nodes as outer boundary'
     
 
+    !---------------------------------------------------Initial conditions
+    character(60) :: MUSG_AssignStartingHeadtoGWF_CMD	=   'gwf initial head'
+    character(60) :: MUSG_AssignStartingDepthtoSWF_CMD	=   'swf initial depth'
+    
     !---------------------------------------------------Boundary conditions
-    character(60) :: MUSG_AssignCHDtoGWF_CMD		=   'gwf constant head'
-    character(60) :: MUSG_AssignRCHtoGWF_CMD		=   'gwf recharge'
-    character(60) :: MUSG_AssignCHDtoSWF_CMD		=   'swf constant head'
-    character(60) :: MUSG_AssignRCHtoSWF_CMD		=   'swf recharge'
+    character(60) :: MUSG_AssignCHDtoGWF_CMD		    =   'gwf constant head'
+    character(60) :: MUSG_AssignRCHtoGWF_CMD		    =   'gwf recharge'
+    character(60) :: MUSG_AssignCHDtoSWF_CMD		    =   'swf constant head'
+    character(60) :: MUSG_AssignRCHtoSWF_CMD		    =   'swf recharge'
+    character(60) :: MUSG_AssignCriticalDepthtoSWF_CMD	=   'swf critical depth'
     
     !---------------------------------------------------GWF Properties
+    character(60) :: MUSG_AssignMaterialtoGWF_CMD		=   'gwf material'
     character(60) :: MUSG_AssignKhtoGWF_CMD		        =   'gwf kh'
     character(60) :: MUSG_AssignKvtoGWF_CMD		        =   'gwf kv'
     character(60) :: MUSG_AssignSstoGWF_CMD		        =   'gwf ss'
@@ -87,12 +99,10 @@
     character(60) :: MUSG_AssignBetatoGWF_CMD	    	=   'gwf beta'
     character(60) :: MUSG_AssignSrtoGWF_CMD		        =   'gwf sr'
     character(60) :: MUSG_AssignBrookstoGWF_CMD		    =   'gwf brooks'
-    character(60) :: MUSG_AssignStartingHeadtoGWF_CMD	=   'gwf initial head'
         
     !---------------------------------------------------SWF Properties
+    character(60) :: MUSG_AssignMaterialtoSWF_CMD		    =   'swf material'
     character(60) :: MUSG_AssignSgcltoSWF_CMD		        =   'swf to gwf connection length'
-    character(60) :: MUSG_AssignStartingDepthtoSWF_CMD		=   'swf initial depth'
-    character(60) :: MUSG_AssignCriticalDepthtoSWF_CMD		=   'swf critical depth'
     character(60) :: MUSG_AssignManningtoSWF_CMD		    =   'swf manning'
     character(60) :: MUSG_AssignDepthForSmoothingtoSWF_CMD	=   'swf depth for smoothing'
         
@@ -684,6 +694,16 @@
                 Modflow.NodalControlVolume=.true.
                 call Msg(TAB//'*** Control volumes (i.e. modflow cells) will be centred at 2D mesh nodes')
             
+            else if(index(MUSG_CMD, MUSG_GWFMaterialsDatabase_CMD)  /= 0) then
+                read(FnumMUT,'(a)') FName
+                call DB_ReadGWFMaterials(FName) 
+            else if(index(MUSG_CMD, MUSG_SWFMaterialsDatabase_CMD)  /= 0) then
+                read(FnumMUT,'(a)') FName
+                call DB_ReadSWFMaterials(FName) 
+            else if(index(MUSG_CMD, MUSG_ET_Database_CMD)  /= 0) then
+                read(FnumMUT,'(a)') FName
+                call DB_ReadET(FName) 
+                
             else if(index(MUSG_CMD, MUSG_2dMeshFromGb_CMD)  /= 0) then
                 ! Build the 2D template mesh from a grdbldr 2D mesh
                 call MUSG_2dMeshFromGb(FnumMUT,TMPLT)
@@ -881,6 +901,8 @@
                 
                 
             ! GWF properties assignment
+            else if(index(MUSG_CMD, MUSG_AssignMaterialtoGWF_CMD)  /= 0) then
+                call MUSG_AssignMaterialtoDomain(FnumMUT,modflow.GWF )
             else if(index(MUSG_CMD, MUSG_AssignKhtoGWF_CMD)  /= 0) then
                 call MUSG_AssignKhtoDomain(FnumMUT,modflow.GWF)
             else if(index(MUSG_CMD, MUSG_AssignKvtoGWF_CMD)  /= 0) then
@@ -1025,6 +1047,22 @@
 
     end subroutine ProcessModflowUSG
    
+  !  !----------------------------------------------------------------------
+  !  subroutine DefineMaterialsDB(FNumMUT)
+  !      implicit none
+  !
+  !      integer :: FNumMUT
+  !      type (ModflowDomain) Domain
+  !      
+  !      integer :: i
+  !      integer :: maxnnp
+  !
+	 !   character(256) :: header
+  !
+		!read(FNumMUT,'(a)') FName
+		!call Msg(TAB//TAB//'Materials read from file '//trim(FName))
+  !  
+  !  end subroutine DefineMaterialsDB
     
     ! Pre-processing instructions
     !----------------------------------------------------------------------
@@ -1485,7 +1523,7 @@
         type (TecplotDomain) TMPLT
 
         integer :: i, j
-	    integer :: nLayer_bot, nLayer_top, ncount, iNode
+	    integer :: nLayer_bot, nLayer_top, ncount
 
         character*80 :: fname
         character*80 :: dummy
@@ -1905,6 +1943,51 @@
     end subroutine MUSG_FlagChosenNodesAsOuterBoundaryTMPLT
 
    !----------------------------------------------------------------------
+    subroutine MUSG_AssignMaterialtoDomain(FNumMUT, Domain) 
+        implicit none
+
+        integer :: FNumMUT
+        type (ModflowDomain) Domain
+        
+        integer :: i
+        real(dr) :: iMaterial
+        
+        read(FNumMUT,*) iMaterial
+        write(TmpSTR,'(g15.5)') iMaterial
+        
+        if(domain.name == 'GWF') then
+		    call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells properties of material '//trim(TmpSTR)//', '//trim(GWFMaterialName(iMaterial)))
+        else if(domain.name == 'SWF') then
+		    call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells properties of material '//trim(TmpSTR)//', '//trim(SWFMaterialName(iMaterial)))
+        end if
+        
+        do i=1,domain.nCells
+            if(bcheck(domain.Cell_is(i),chosen)) then
+                if(domain.name == 'GWF') then
+                    domain.Kh(i)=Kh_Kx(iMaterial)
+                    domain.Kv(i)=Kv_Kz(iMaterial)
+                    domain.Ss(i)=Specificstorage(iMaterial)
+                    domain.Sy(i)=SpecificYield(iMaterial)
+                    domain.Brooks(i)=Brooks_Corey(iMaterial)
+                    domain.Alpha(i)=Alpha(iMaterial)
+                    domain.Beta(i)=Beta(iMaterial)
+                    domain.Sr(i)=Sr(iMaterial)
+
+                else if(domain.name == 'SWF') then
+                    domain.Manning(i)=ManningCoefficient(iMaterial)
+                    domain.Sgcl(i)=SWF_GWF_ConnectionLength(iMaterial)
+                    !domain.DepressionStorageHeight(i)=DepressionStorageHeight(iMaterial)
+                    !domain.ObstructionStorageHeight(i)=ObstructionStorageHeight(i)
+                endif
+
+                call Msg('Tabular inputs not implemented yet')
+            end if
+        end do
+        
+        continue
+    
+    end subroutine MUSG_AssignMaterialtoDomain
+   !----------------------------------------------------------------------
     subroutine MUSG_AssignKhtoDomain(FNumMUT,domain) 
         implicit none
 
@@ -1917,13 +2000,6 @@
         read(FNumMUT,*) value
         write(TmpSTR,'(g15.5)') value
 		call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells a Kh of '//trim(TmpSTR))
-
-
-        if(.not. allocated(domain.Kh)) then 
-            allocate(domain.Kh(domain.nCells),stat=ialloc)
-            call AllocChk(ialloc,'Cell Kh array')            
-            domain.Kh(:)=-999.d0
-        end if
         
         do i=1,domain.nCells
             if(bcheck(domain.Cell_is(i),chosen)) then
@@ -1946,13 +2022,6 @@
         write(TmpSTR,'(g15.5)') value
 		call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells a Kv of '//trim(TmpSTR))
 
-
-        if(.not. allocated(domain.Kv)) then 
-            allocate(domain.Kv(domain.nCells),stat=ialloc)
-            call AllocChk(ialloc,'Cell Kv array')            
-            domain.Kv(:)=-999.d0
-        end if
-        
         do i=1,domain.nCells
             if(bcheck(domain.Cell_is(i),chosen)) then
                 domain.Kv(i)=value
@@ -1974,13 +2043,6 @@
         write(TmpSTR,'(g15.5)') value
 		call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells a Ss of '//trim(TmpSTR))
 
-
-        if(.not. allocated(domain.Ss)) then 
-            allocate(domain.Ss(domain.nCells),stat=ialloc)
-            call AllocChk(ialloc,'Cell Ss array')            
-            domain.Ss(:)=-999.d0
-        end if
-        
         do i=1,domain.nCells
             if(bcheck(domain.Cell_is(i),chosen)) then
                 domain.Ss(i)=value
@@ -2003,13 +2065,6 @@
         write(TmpSTR,'(g15.5)') value
 		call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells a Sy of '//trim(TmpSTR))
 
-
-        if(.not. allocated(domain.Sy)) then 
-            allocate(domain.Sy(domain.nCells),stat=ialloc)
-            call AllocChk(ialloc,'Cell Sy array')            
-            domain.Sy(:)=-999.d0
-        end if
-        
         do i=1,domain.nCells
             if(bcheck(domain.Cell_is(i),chosen)) then
                 domain.Sy(i)=value
@@ -2031,13 +2086,6 @@
         write(TmpSTR,'(g15.5)') value
 		call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells a Alpha of '//trim(TmpSTR))
 
-
-        if(.not. allocated(domain.Alpha)) then 
-            allocate(domain.Alpha(domain.nCells),stat=ialloc)
-            call AllocChk(ialloc,'Cell Alpha array')            
-            domain.Alpha(:)=-999.d0
-        end if
-        
         do i=1,domain.nCells
             if(bcheck(domain.Cell_is(i),chosen)) then
                 domain.Alpha(i)=value
@@ -2059,13 +2107,6 @@
         write(TmpSTR,'(g15.5)') value
 		call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells a Beta of '//trim(TmpSTR))
 
-
-        if(.not. allocated(domain.Beta)) then 
-            allocate(domain.Beta(domain.nCells),stat=ialloc)
-            call AllocChk(ialloc,'Cell Beta array')            
-            domain.Beta(:)=-999.d0
-        end if
-        
         do i=1,domain.nCells
             if(bcheck(domain.Cell_is(i),chosen)) then
                 domain.Beta(i)=value
@@ -2087,13 +2128,6 @@
         write(TmpSTR,'(g15.5)') value
 		call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells a Sr of '//trim(TmpSTR))
 
-
-        if(.not. allocated(domain.Sr)) then 
-            allocate(domain.Sr(domain.nCells),stat=ialloc)
-            call AllocChk(ialloc,'Cell Sr array')            
-            domain.Sr(:)=-999.d0
-        end if
-        
         do i=1,domain.nCells
             if(bcheck(domain.Cell_is(i),chosen)) then
                 domain.Sr(i)=value
@@ -2115,13 +2149,6 @@
         write(TmpSTR,'(g15.5)') value
 		call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells a Brooks of '//trim(TmpSTR))
 
-
-        if(.not. allocated(domain.Brooks)) then 
-            allocate(domain.Brooks(domain.nCells),stat=ialloc)
-            call AllocChk(ialloc,'Cell Brooks array')            
-            domain.Brooks(:)=-999.d0
-        end if
-        
         do i=1,domain.nCells
             if(bcheck(domain.Cell_is(i),chosen)) then
                 domain.Brooks(i)=value
@@ -2143,13 +2170,6 @@
         write(TmpSTR,'(g15.5)') value
 		call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells starting heads of '//trim(TmpSTR))
 
-
-        if(.not. allocated(domain.StartingHeads)) then 
-            allocate(domain.StartingHeads(domain.nCells),stat=ialloc)
-            call AllocChk(ialloc,'Cell StartingHeads array')            
-            domain.StartingHeads(:)=-999.d0
-        end if
-        
         do i=1,domain.nCells
             if(bcheck(domain.Cell_is(i),chosen)) then
                 domain.StartingHeads(i)=value
@@ -2172,13 +2192,6 @@
         write(TmpSTR,'(g15.5)') value
 		call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells an Sgcl of '//trim(TmpSTR))
 
-
-        if(.not. allocated(domain.Sgcl)) then 
-            allocate(domain.Sgcl(domain.nCells),stat=ialloc)
-            call AllocChk(ialloc,'Cell Sgcl array')            
-            domain.Sgcl(:)=-999.d0
-        end if
-        
         do i=1,domain.nCells
             if(bcheck(domain.Cell_is(i),chosen)) then
                 domain.Sgcl(i)=value
@@ -2202,12 +2215,6 @@
 		call Msg(TAB//'Assigning all chosen '//trim(domain.name)//' cells a starting depth of '//trim(TmpSTR))
 
 
-        if(.not. allocated(domain.StartingHeads)) then 
-            allocate(domain.StartingHeads(domain.nCells),stat=ialloc)
-            call AllocChk(ialloc,'Cell StartingHeads array')            
-            domain.StartingHeads(:)=-999.d0
-        end if
-        
         do i=1,domain.nCells
             if(bcheck(domain.Cell_is(i),chosen)) then
                 domain.StartingHeads(i)=domain.zCell(i)+value
@@ -2286,12 +2293,6 @@
         integer :: i, j, k, j1, j2, jNext, nNext, jLast, nLast
         
 		call Msg(TAB//'Define all chosen '//trim(domain.name)//' Cells to be critical depth')
-        
-        if(.not. allocated(domain.CriticalDepthLength)) then 
-            allocate(domain.CriticalDepthLength(domain.nCells),stat=ialloc)
-            call AllocChk(ialloc,'Cell CriticalDepthLength array')            
-            domain.CriticalDepthLength(:)=0.d0
-        end if
 
         if(.not. allocated(domain.Node_Is)) then 
             call ErrMsg('Currently requires '//trim(domain.name)//' outer boundary nodes to be flagged') 
@@ -2583,7 +2584,6 @@
     
         type (ModflowProject) Modflow
         type (TecplotDomain) TMPLT
-        type (TecplotDomain) TECPLOT_SWF
         type (TecplotDomain) TECPLOT_GWF
 
         integer :: i, j, k
@@ -2881,6 +2881,23 @@
             
         end if
         
+        ! Modflow GWF material properties
+        allocate(Modflow.GWF.Kh(Modflow.GWF.nCells),Modflow.GWF.Kv(Modflow.GWF.nCells), &
+            Modflow.GWF.Ss(Modflow.GWF.nCells),Modflow.GWF.Sy(Modflow.GWF.nCells),&
+            Modflow.GWF.Alpha(Modflow.GWF.nCells),Modflow.GWF.Sr(Modflow.GWF.nCells), &
+            Modflow.GWF.Brooks(Modflow.GWF.nCells),Modflow.GWF.StartingHeads(Modflow.GWF.nCells), &
+            stat=ialloc)
+        call AllocChk(ialloc,'GWF cell material property arrays')            
+        Modflow.GWF.Kh(:)=-999.d0
+        Modflow.GWF.Kh(:)=-999.d0
+        Modflow.GWF.Ss(:)=-999.d0
+        Modflow.GWF.Sy(:)=-999.d0
+        Modflow.GWF.Alpha(:)=-999.d0
+        Modflow.GWF.Beta(:)=-999.d0
+        Modflow.GWF.Sr(:)=-999.d0
+        Modflow.GWF.Brooks(:)=-999.d0
+        Modflow.GWF.StartingHeads(:)=-999.d0
+
         allocate(Modflow.GWF.Cell_Is(Modflow.GWF.nCells),stat=ialloc)
         call AllocChk(ialloc,trim(Modflow.GWF.name)//' Cell_Is array')            
         Modflow.GWF.Cell_Is(:)=0
@@ -2953,15 +2970,6 @@
             Modflow.SWF.iLayer(i) = 1
         end do
 
-        ! SWF Cell connection data
-        ! Cell SWF-GWF connection length
-        if(.not. allocated(Modflow.SWF.Sgcl)) then
-            allocate(Modflow.SWF.Sgcl(Modflow.SWF.nCells),stat=ialloc)
-            call AllocChk(ialloc,'SWF-GWF cell connection length arrays')
-            do i=1,Modflow.SWF.nCells
-                Modflow.SWF.Sgcl(i)=0.001     ! default value 
-            end do
-        end if
 
         ! Cell zone number
         Modflow.SWF.nZones=TECPLOT_SWF.nZones
@@ -2986,6 +2994,13 @@
         else
             call MeshCentredSWFCellGeometry(Modflow, Tecplot_SWF,TMPLT)
         end if
+        
+        ! Modflow SWF material properties
+        allocate(modflow.SWF.Sgcl(modflow.SWF.nCells),modflow.SWF.CriticalDepthLength(modflow.SWF.nCells),Modflow.SWF.StartingHeads(Modflow.SWF.nCells),stat=ialloc)
+        call AllocChk(ialloc,'SWF cell material property arrays')    
+        modflow.SWF.Sgcl(:)=0.001
+        modflow.SWF.CriticalDepthLength(:)=0.d0
+        Modflow.SWF.StartingHeads(:)=-999.d0
         
         allocate(Modflow.SWF.Cell_Is(Modflow.SWF.nCells),stat=ialloc)
         call AllocChk(ialloc,trim(Modflow.SWF.name)//' Cell_Is array')            
